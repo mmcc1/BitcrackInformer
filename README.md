@@ -10,7 +10,7 @@ BitcrackCandidateInformer - Produces candidate weak keyspaces
 Requirements:  
 SQL Server  
 Visual Studio 2022  
-Bitcrack (Nvidia/CUDA release)
+Bitcrack (Nvidia/CUDA release - OpenCL release does not work, so Nvidia cards only)
   
 To Use:  
 Run BitcrackByteInformer to generate weak bytes which are saved to SQL.  
