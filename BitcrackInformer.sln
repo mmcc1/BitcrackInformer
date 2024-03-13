@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcrackByteInformer", "BitcrackByteInformer\BitcrackByteInformer.csproj", "{A871A11B-83F1-409C-9A7D-BA821C4D0E5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitCrackCandidateInformer", "BitCrackCandidateInformer\BitCrackCandidateInformer.csproj", "{8DEF8EAB-802B-4ADC-A0A1-AF2D8FA0FC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibBitcoinUtils", "LibBitcoinUtils\LibBitcoinUtils.csproj", "{45E7663E-23D6-4EED-BA05-E57CC99B9722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibMachineLearning", "LibMachineLearning\LibMachineLearning.csproj", "{402AD25A-D0C5-41A4-8E67-33158F036CC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDAL", "LibDAL\LibDAL.csproj", "{DEA9253A-00F0-4628-9213-73CB9EDD4EF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A871A11B-83F1-409C-9A7D-BA821C4D0E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A871A11B-83F1-409C-9A7D-BA821C4D0E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A871A11B-83F1-409C-9A7D-BA821C4D0E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A871A11B-83F1-409C-9A7D-BA821C4D0E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DEF8EAB-802B-4ADC-A0A1-AF2D8FA0FC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEF8EAB-802B-4ADC-A0A1-AF2D8FA0FC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEF8EAB-802B-4ADC-A0A1-AF2D8FA0FC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEF8EAB-802B-4ADC-A0A1-AF2D8FA0FC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E7663E-23D6-4EED-BA05-E57CC99B9722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E7663E-23D6-4EED-BA05-E57CC99B9722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E7663E-23D6-4EED-BA05-E57CC99B9722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E7663E-23D6-4EED-BA05-E57CC99B9722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402AD25A-D0C5-41A4-8E67-33158F036CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402AD25A-D0C5-41A4-8E67-33158F036CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402AD25A-D0C5-41A4-8E67-33158F036CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402AD25A-D0C5-41A4-8E67-33158F036CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA9253A-00F0-4628-9213-73CB9EDD4EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA9253A-00F0-4628-9213-73CB9EDD4EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA9253A-00F0-4628-9213-73CB9EDD4EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA9253A-00F0-4628-9213-73CB9EDD4EF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3FD7D253-C277-4A68-9F9E-7FD4FF26156B}
+	EndGlobalSection
+EndGlobal
