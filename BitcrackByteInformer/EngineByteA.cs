@@ -275,8 +275,6 @@ namespace BitcrackByteInformer
                 currentDeathRate = 0;
                 Save(matchCount);
             }
-            else
-                currentDeathRate++;
 
             NeuralNetEvaluate();
         }
