@@ -283,7 +283,7 @@ namespace BitCrackCandidateInformer
                 weightedSum4[k] = activationFunctions.BinaryStep(weightedSum4[k]);
 
             double[] cfbtd = ConvertFromBinaryToDouble(weightedSum4);
-            pKeystores[pkey].CandidatePrivKeys[byteNum] = (byte)cfbtd[byteNum];
+            pKeystores[pkey].CandidatePrivKeys[31 - byteNum] = (byte)cfbtd[31 - byteNum];
         }
 
         #endregion
@@ -324,15 +324,7 @@ namespace BitCrackCandidateInformer
 
             for (int i = 0; i < pKeystores.Count; i++)
             {
-                byte[] reversed = new byte[32];
-                int index = 0;
-
-                for (int j = 31; j > -1; j--)
-                {
-                    reversed[j] = pKeystores[i].CandidatePrivKeys[index++];
-                }
-
-                string toHex = Helpers.ByteArrayToString(reversed);
+                string toHex = Helpers.ByteArrayToString(pKeystores[i].CandidatePrivKeys);
 
                 StringBuilder sb = new StringBuilder();
                 StringBuilder sb2 = new StringBuilder();
