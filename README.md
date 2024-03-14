@@ -29,4 +29,6 @@ Use the keyspaces with BitCrack
 Re-run BitcrackByteInformer to add to the DB and BitCrackCandidateInformer to generate new keyspaces.  If you are seeing the same results, purge the DB.
 
 Example Bitcrack command:  
-cuBitCrack --keyspace b9cfdad58d43048e34aa97a3ec08230ab40bc87811f6f973b67a050000000000:b9cfdad58d43048e34aa97a3ec08230ab40bc87811f6f973b67a05FFFFFFFFFF -i addresses.txt -o privatekeys -b 256 -t 256 -p256
+cuBitCrack --keyspace b9cfdad58d43048e34aa97a3ec08230ab40bc87811f6f973b67a050000000000:b9cfdad58d43048e34aa97a3ec08230ab40bc87811f6f973b67a05FFFFFFFFFF -i addresses.txt -o privatekeys -b 256 -t 256 -p256  
+  
+The default keyspace range produced by BitcrackInformer is about 30 mins worth of searching at an average of 600 MKeys/s,
