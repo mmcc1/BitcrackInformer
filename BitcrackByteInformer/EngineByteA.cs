@@ -56,8 +56,8 @@ namespace BitcrackByteInformer
                 {
                     LayerNumber = 0,
                     NetworkNumber = i,
-                    Bias = 0.0,
-                    Weights = weightsGenerator.CreateRandomWeights(32)
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
+                    Weights = weightsGenerator.CreateRandomWeights(20)
                 };
 
                 neuralNetwork.Add(nn);
@@ -70,8 +70,8 @@ namespace BitcrackByteInformer
                 {
                     LayerNumber = 1,
                     NetworkNumber = i,
-                    Bias = 0.0,
-                    Weights = weightsGenerator.CreateRandomWeights(32)
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
+                    Weights = weightsGenerator.CreateRandomWeights(20)
                 };
 
                 neuralNetwork.Add(nn);
@@ -84,7 +84,7 @@ namespace BitcrackByteInformer
                 {
                     LayerNumber = 2,
                     NetworkNumber = i,
-                    Bias = 0.0,
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
                     Weights = weightsGenerator.CreateRandomWeights(64)
                 };
 
@@ -98,7 +98,21 @@ namespace BitcrackByteInformer
                 {
                     LayerNumber = 3,
                     NetworkNumber = i,
-                    Bias = 0.0,
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
+                    Weights = weightsGenerator.CreateRandomWeights(128)
+                };
+
+                neuralNetwork.Add(nn);
+            }
+
+            //Layer 4
+            for (int i = 0; i < 256; i++)
+            {
+                NeuralNetwork nn = new NeuralNetwork()
+                {
+                    LayerNumber = 4,
+                    NetworkNumber = i,
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
                     Weights = weightsGenerator.CreateRandomWeights(128)
                 };
 
@@ -110,10 +124,10 @@ namespace BitcrackByteInformer
             {
                 NeuralNetwork nn = new NeuralNetwork()
                 {
-                    LayerNumber = 4,
+                    LayerNumber = 5,
                     NetworkNumber = i,
-                    Bias = 0.0,
-                    Weights = weightsGenerator.CreateRandomWeights(128)
+                    Bias = weightsGenerator.CreateRandomWeights(1)[0],
+                    Weights = weightsGenerator.CreateRandomWeights(256)
                 };
 
                 neuralNetwork.Add(nn);
@@ -188,7 +202,7 @@ namespace BitcrackByteInformer
             {
                 //Layer 0
                 List<NeuralNetwork> hiddenLayer1 = neuralNetwork.FindAll(x => x.LayerNumber == 0).OrderBy(x => x.NetworkNumber).ToList();
-                double[] weightedSum1 = new double[20];
+                double[] weightedSum1 = new double[hiddenLayer1.Count()];
                 for (int j = 0; j < hiddenLayer1.Count; j++)
                     weightedSum1[j] = perceptron.Execute(hiddenLayer1[j].Weights, trainingDataSet[i].PublicAddressDouble, hiddenLayer1[j].Bias);
 
@@ -197,7 +211,7 @@ namespace BitcrackByteInformer
 
                 //Layer 1
                 List<NeuralNetwork> hiddenLayer2 = neuralNetwork.FindAll(x => x.LayerNumber == 1).OrderBy(x => x.NetworkNumber).ToList();
-                double[] weightedSum2 = new double[64];
+                double[] weightedSum2 = new double[hiddenLayer2.Count()];
                 for (int j = 0; j < hiddenLayer2.Count; j++)
                     weightedSum2[j] = perceptron.Execute(hiddenLayer2[j].Weights, weightedSum1, hiddenLayer2[j].Bias);
 
@@ -206,7 +220,7 @@ namespace BitcrackByteInformer
 
                 //Layer 2
                 List<NeuralNetwork> hiddenLayer3 = neuralNetwork.FindAll(x => x.LayerNumber == 2).OrderBy(x => x.NetworkNumber).ToList();
-                double[] weightedSum3 = new double[128];
+                double[] weightedSum3 = new double[hiddenLayer3.Count()];
                 for (int j = 0; j < hiddenLayer3.Count; j++)
                     weightedSum3[j] = perceptron.Execute(hiddenLayer3[j].Weights, weightedSum2, hiddenLayer3[j].Bias);
 
@@ -215,23 +229,32 @@ namespace BitcrackByteInformer
 
                 //Layer 3
                 List<NeuralNetwork> hiddenLayer4 = neuralNetwork.FindAll(x => x.LayerNumber == 3).OrderBy(x => x.NetworkNumber).ToList();
-                double[] weightedSum5 = new double[128];
+                double[] weightedSum4 = new double[hiddenLayer4.Count()];
                 for (int j = 0; j < hiddenLayer4.Count; j++)
-                    weightedSum5[j] = perceptron.Execute(hiddenLayer4[j].Weights, weightedSum3, hiddenLayer4[j].Bias);
-
-                for (int k = 0; k < weightedSum3.Length; k++)
-                    weightedSum5[k] = activationFunctions.BinaryStep(weightedSum5[k]);
-
-                //Output Layer
-                List<NeuralNetwork> outputLayer = neuralNetwork.FindAll(x => x.LayerNumber == 4).OrderBy(x => x.NetworkNumber).ToList();
-                double[] weightedSum4 = new double[256];
-                for (int j = 0; j < outputLayer.Count; j++)
-                    weightedSum4[j] = perceptron.Execute(outputLayer[j].Weights, weightedSum5, outputLayer[j].Bias);
+                    weightedSum4[j] = perceptron.Execute(hiddenLayer4[j].Weights, weightedSum3, hiddenLayer4[j].Bias);
 
                 for (int k = 0; k < weightedSum4.Length; k++)
                     weightedSum4[k] = activationFunctions.BinaryStep(weightedSum4[k]);
 
-                outputWeights.Add(weightedSum4);
+                //Layer 4
+                List<NeuralNetwork> hiddenLayer5 = neuralNetwork.FindAll(x => x.LayerNumber == 4).OrderBy(x => x.NetworkNumber).ToList();
+                double[] weightedSum5 = new double[hiddenLayer5.Count()];
+                for (int j = 0; j < hiddenLayer5.Count; j++)
+                    weightedSum5[j] = perceptron.Execute(hiddenLayer5[j].Weights, weightedSum4, hiddenLayer5[j].Bias);
+
+                for (int k = 0; k < weightedSum5.Length; k++)
+                    weightedSum5[k] = activationFunctions.BinaryStep(weightedSum5[k]);
+
+                //Output Layer
+                List<NeuralNetwork> outputLayer = neuralNetwork.FindAll(x => x.LayerNumber == 5).OrderBy(x => x.NetworkNumber).ToList();
+                double[] weightedSum6 = new double[outputLayer.Count()];
+                for (int j = 0; j < outputLayer.Count; j++)
+                    weightedSum6[j] = perceptron.Execute(outputLayer[j].Weights, weightedSum5, outputLayer[j].Bias);
+
+                for (int k = 0; k < weightedSum6.Length; k++)
+                    weightedSum6[k] = activationFunctions.BinaryStep(weightedSum6[k]);
+
+                outputWeights.Add(weightedSum5);
             }
 
             Assess(outputWeights);
@@ -329,7 +352,15 @@ namespace BitcrackByteInformer
                     hiddenLayer4[j].Weights = geneticAlgorithm.CrossOverAndMutation(toChange, hiddenLayer4[j].Weights);
                 }
 
-                List<NeuralNetwork> outputLayer = neuralNetwork.FindAll(x => x.LayerNumber == 4).OrderBy(x => x.NetworkNumber).ToList();
+                List<NeuralNetwork> hiddenLayer5 = neuralNetwork.FindAll(x => x.LayerNumber == 4).OrderBy(x => x.NetworkNumber).ToList();
+
+                for (int j = 0; j < hiddenLayer5.Count; j++)
+                {
+                    bool[] toChange = geneticAlgorithm.EvaluateFitness(hiddenLayer5[j].Weights);
+                    hiddenLayer5[j].Weights = geneticAlgorithm.CrossOverAndMutation(toChange, hiddenLayer5[j].Weights);
+                }
+
+                List<NeuralNetwork> outputLayer = neuralNetwork.FindAll(x => x.LayerNumber == 5).OrderBy(x => x.NetworkNumber).ToList();
 
                 for (int j = 0; j < outputLayer.Count; j++)
                 {
