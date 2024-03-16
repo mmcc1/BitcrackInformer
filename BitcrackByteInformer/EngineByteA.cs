@@ -254,7 +254,7 @@ namespace BitcrackByteInformer
                 for (int k = 0; k < weightedSum6.Length; k++)
                     weightedSum6[k] = activationFunctions.BinaryStep(weightedSum6[k]);
 
-                outputWeights.Add(weightedSum5);
+                outputWeights.Add(weightedSum6);
             }
 
             Assess(outputWeights);
